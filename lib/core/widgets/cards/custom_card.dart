@@ -3,23 +3,24 @@ import 'package:notesphere/core/extensions/context_extension.dart';
 import 'package:notesphere/core/extensions/widget_extensions.dart';
 
 class CustomCard extends StatelessWidget {
-  final Widget child;
   final EdgeInsetsGeometry? padding;
   final VoidCallback? onTap;
   final Color? color;
   final bool hasShadow;
   final VoidCallback? onLongPress;
   final EdgeInsetsGeometry? margin;
+  final String title, subtitle;
 
   const CustomCard({
     super.key,
-    required this.child,
     this.padding,
     this.onTap,
     this.color,
     this.hasShadow = true,
     this.onLongPress,
     this.margin,
+    this.title = 'Note Title',
+    this.subtitle = 'Note discription',
   });
 
   @override
@@ -34,7 +35,31 @@ class CustomCard extends StatelessWidget {
                 height: MediaQuery.sizeOf(context).height * 0.17,
                 width: 400,
                 margin: margin,
-                child: child,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: context.theme.colorScheme.onSurface,
+                      ),
+                    ),
+                    Text(
+                      subtitle,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: context.theme.colorScheme.onSurface.withOpacity(
+                          0.7,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               )
               .inkWell(onTap: onTap ?? () {})
               .decorated(

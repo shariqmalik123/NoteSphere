@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notesphere/core/widgets/cards/custom_card.dart';
 import 'package:provider/provider.dart';
 import 'package:notesphere/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:notesphere/core/widgets/buttons/custom_floating_button.dart';
@@ -27,7 +28,6 @@ class _NoteScreenState extends State<NoteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       appBar: CustomAppBar(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -36,8 +36,8 @@ class _NoteScreenState extends State<NoteScreen> {
         centerTitle: false,
         showShadow: true,
         elevation: 0,
+        scrolledUnderElevation: 0,
         showBackButton: false,
-        scrolledUnderElevation: 6,
       ),
 
       body: Consumer<NotesViewModel>(
@@ -81,15 +81,9 @@ class _NoteScreenState extends State<NoteScreen> {
 
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 12),
-                        child: Card(
-                          child: ListTile(
-                            title: Text(note.title),
-                            subtitle: Text(
-                              note.body,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
+                        child: CustomCard(
+                          title: note.title,
+                          subtitle: note.body,
                         ),
                       );
                     },
