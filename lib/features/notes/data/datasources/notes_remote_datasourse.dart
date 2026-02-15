@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:notesphere/core/network/api_endpoints.dart';
 import '../models/note_model.dart';
 
 abstract class NotesRemoteDataSource {
@@ -12,10 +13,9 @@ class NotesRemoteDataSourceImpl implements NotesRemoteDataSource {
 
   @override
   Future<List<NoteModel>> getNotes() async {
-    final response = await dio.get('/posts');
+    final response = await dio.get(ApiEndpoints.getNotes);
+    final List notes = response.data['posts'];
 
-    return (response.data as List)
-        .map((json) => NoteModel.fromJson(json))
-        .toList();
+    return notes.map((e) => NoteModel.fromJson(e)).toList();
   }
 }

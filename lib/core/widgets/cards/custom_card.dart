@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:notesphere/core/colors_themes/colors.dart';
+import 'package:notesphere/core/colors_themes/shadows.dart';
+import 'package:notesphere/core/colors_themes/text_style.dart';
 import 'package:notesphere/core/extensions/context_extension.dart';
 import 'package:notesphere/core/extensions/widget_extensions.dart';
 
@@ -39,39 +42,24 @@ class CustomCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: context.theme.colorScheme.onSurface,
-                      ),
-                    ),
+                    Text(title, maxLines: 1, style: AppTextStyles.headingLarge),
                     Text(
                       subtitle,
-                      maxLines: 3,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: context.theme.colorScheme.onSurface.withOpacity(
-                          0.7,
-                        ),
-                      ),
+                      style: AppTextStyles.bodyLarge,
                     ),
                   ],
                 ),
               )
               .inkWell(onTap: onTap ?? () {})
               .decorated(
-                boxShadow: [
-                  BoxShadow(color: Colors.black45, offset: Offset(0.4, 0.5)),
-                ],
-                color: color ?? context.theme.cardColor,
+                boxShadow: AppShadows.card(isDark),
+
+                color: isDark ? AppColors.darkSurface : AppColors.white,
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                  color: isDark
-                      ? const Color(0xFF404040)
-                      : const Color(0xFFE5E5E5),
+                  color: isDark ? AppColors.darkBorder : AppColors.lightBorder,
                   width: 1,
                 ),
               ),

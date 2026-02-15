@@ -5,7 +5,7 @@ class AppTextStyles {
 
   // Headings
   static const TextStyle headingLarge = TextStyle(
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: FontWeight.w700,
     fontFamily: _fontFamily,
   );
@@ -18,7 +18,7 @@ class AppTextStyles {
 
   // Body
   static const TextStyle bodyLarge = TextStyle(
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: FontWeight.w400,
     fontFamily: _fontFamily,
   );

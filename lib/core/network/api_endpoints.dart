@@ -1,5 +1,5 @@
 class ApiEndpoints {
-  static const String baseUrl = "https://jsonplaceholder.typicode.com";
+  static const String baseUrl = "https://dummyjson.com";
 
   // Auth endpoints
   static const String login = '$baseUrl/auth/login';
@@ -8,7 +8,7 @@ class ApiEndpoints {
   static const String refreshToken = '$baseUrl/auth/refresh';
 
   // Notes endpoints
-  static const String getNotes = '$baseUrl/notes';
+  static const String getNotes = '$baseUrl/posts';
   static const String createNote = '$baseUrl/notes';
   static const String getNote = '$baseUrl/notes';
   static const String updateNote = '$baseUrl/notes';

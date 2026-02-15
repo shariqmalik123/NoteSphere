@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notesphere/core/colors_themes/text_style.dart';
 import 'package:notesphere/core/widgets/cards/custom_card.dart';
 import 'package:provider/provider.dart';
 import 'package:notesphere/core/widgets/app_bars/custom_app_bar.dart';
@@ -27,12 +28,9 @@ class _NoteScreenState extends State<NoteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: CustomAppBar(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
         title: 'NoteSphere',
-        titleStyle: const TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
+        titleStyle: AppTextStyles.headingLarge,
         centerTitle: false,
         showShadow: true,
         elevation: 0,
@@ -68,6 +66,7 @@ class _NoteScreenState extends State<NoteScreen> {
           return Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 const SizedBox(height: 20),
                 SearchTextField(),
@@ -84,6 +83,7 @@ class _NoteScreenState extends State<NoteScreen> {
                         child: CustomCard(
                           title: note.title,
                           subtitle: note.body,
+                          onTap: () => print('Tapped note: ${note.title}'),
                         ),
                       );
                     },
